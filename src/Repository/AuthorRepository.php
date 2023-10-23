@@ -32,7 +32,7 @@ class AuthorRepository extends ServiceEntityRepository
 //            ->orderBy('a.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
-//            ->getResult()
+//            ->getResult()6
 //        ;
 //    }
 

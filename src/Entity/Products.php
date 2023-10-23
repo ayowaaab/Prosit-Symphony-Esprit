@@ -20,16 +20,15 @@ class Products
     #[ORM\Column(length: 180)]
     private ?string $description = null;
 
-    // #[ORM\Column(length: 180)]
-    #[ORM\Column(type:"blob")]
-    private $img = null;
+    #[ORM\Column(length: 180)]
+    private ?string $img = null;
 
     public function getImg()
     {
         return $this->img;
     }
 
-    public function setImg($img)
+    public function setImg(string $img)
     {
         $this->img = $img;
         return $this;
