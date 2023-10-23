@@ -1,0 +1,42 @@
+<style>*{text-align: start;}</style>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Book</h1>
+    <table>
+      <tr>
+        <th>Title :</th>
+        <td>{{tab.title}}</td>
+      </tr>
+      <tr>
+        <th>Reference :</th>
+        <td>{{tab.ref}}</td>
+      </tr>
+      <tr>
+        <th>Category :</th>
+        <td>{{tab.category}}</td>
+      </tr>
+      <tr>
+        <th>Publication Date :</th>
+        <td>{{tab.publicationDate|date("m/d/v")}}</td>
+      </tr>
+      <tr>
+        <th>Author :</th>
+        <td>{{tab.author}}</td>
+      </tr>
+      <tr>
+        <th>The number of books by the author :</th>
+        <td>{{N}}</td>
+      </tr>
+    </table>
+    <div style="display:flex ;gap:2rem;padding:1rem">
+        <a href="{{ path('app_book') }}">Back to List</a>
+        <a href="{{ path('app_editbook', { ref : tab.ref } ) }}">Edit</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+  </head>
+  <body>
+    {# ! ---------------------- CSS ---------------------- #}
+
+    <style>
+      * {font-family: "poppins";letter-spacing: 1px;white-space: nowrap;text-align: center;}
+      body{width: 95%;margin: 1rem auto}
+      table{margin: 0 auto;}
+      td {padding:10px;   width: 150px;}
+      th {color: #555;}
+      img{width: 100px;height:100px;object-fit: cover;}
+    </style>
+
+    {# ! ---------------------- HTML ---------------------- #} 
+
+    {% if (Tab|length == 0 )%}
+    <h1>The Table is Empty</h1>
+
+    {% else %}
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Picture</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>NB_Books</th>
+        <th>Details</th>
+      </tr>
+
+      {% set totalLivre = 0 %} 
+      {% for result in Tab %} 
+      {% set totalLivre = result.nb_books + totalLivre %}
+
+      <tr>
+        <td style="font-size: 2em;">{{ result.id }}</td>
+        <td>
+          <img src="{{ asset(result.picture) }}" >
+        </td>
+        <td>{{ result.username | upper }}</td>
+        <td>{{ result.email }}</td>
+
+        <td>{{ result.nb_books }}</td>
+        <td>
+          <u><a href="{{ path( 'app_auhtorDetails',{'id': result.id} ) }}">View More</a></u>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </table>
+    {% endif %} 
+    
+    <center>
+      <h2>Nombre Total d'auteur = {{ Tab|length }}</h2>
+    </center>
+    
+    <center>
+      <h2>Nombre Total des Livres = {{ totalLivre }}</h2>
+    </center>
+
+  </body>
+</html>

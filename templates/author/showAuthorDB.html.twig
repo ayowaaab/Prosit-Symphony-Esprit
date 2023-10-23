@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>DB List</title>
+  </head>
+  <body>
+    {% if dbList|length == 0 %}
+    <h1>
+      ❌The Table is Empty❌
+    </h1>
+    {% else %}
+    <h1>🖋 Authors List 🖋</h1>
+    <table class="author">
+      <tr>
+        <th>ID</th>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>N°Books</th>
+        <th colspan="2">Actions</th>
+      </tr>
+      {% for x in dbList %}
+      <tr>
+        <td>{{ x.id }}</td>
+        <td>{{ x.username }}</td>
+        <td>{{ x.email }}</td>
+        <td>{{ x.nbBooks}}</td>
+        <td><a href="{{ path('app_editauthor', { id: x.id }) }}"><img src="images/edit.svg" alt="Edit"></a></td>
+        <td>
+          <a href="{{ path('app_deleteauthor', { id: x.id }) }}"><img src="images/trash.svg" alt="trash"></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+  </body>
+</html>

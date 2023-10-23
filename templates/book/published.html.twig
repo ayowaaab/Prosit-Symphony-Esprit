@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('style.css') }}" />
+    <title>Book</title>
+  </head>
+  <body class="book">
+    {% set Nbpub = 0 %} {% if Tab|length == 0 %}
+    <h1>❌ Pas de livre ❌</h1>
+    {% else %}
+    <h1>📖 List of Books 📖</h1>
+    <div id="published">
+      <label for="check">UnPublished</label>
+      <input type="checkbox" id="check" />
+    </div>
+    <table class="book">
+      <tr>
+        <th>Ref</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Published</th>
+        <th colspan="3">Actions</th>
+      </tr>
+      {% for i in Tab %} {% if i.published == 1 %} {% set Nbpub = Nbpub + 1 %}{% endif %} 
+      <tr>
+        <td>{{ i.ref }}</td>
+        <td>{{ i.author }}</td>
+        <td>{{ i.title }}</td>
+        <td>{{ i.category }}</td>
+        <td>{{ i.publicationDate|date("m/d/Y")}}</td>
+        {% if i.published == 1 %}
+        <td>Yes</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        <td><a href="{{ path('app_editbook', { ref: i.ref }) }}"><img src="images/edit.svg" alt="edit"></a></td>
+        <td>
+          <a href="{{ path('app_deletbook', { ref: i.ref }) }}"><img src="images/trash.svg" alt="trash"></a>
+        </td>
+        <td>
+          <a href="{{ path('app_showbook', { ref: i.ref }) }}"><img src="images/eye.svg" alt="view"></a>
+        </td>
+      </tr>
+       {% endfor %}
+    </table>
+    {% endif %} {% set NbUnpub = Nbpub - Tab|length %}
+
+    <br />
+    <div>
+      <h2>Number of Published Books : {{ Nbpub }}</h2>
+      <h2>Number of Unpublished Books : {{ NbUnpub | abs }}</h2>
+    </div>
+    <br />
+    <button
+      style="padding: 0.25rem .75rem; border-radius: 10px; border: 1px solid grey;"
+    >
+      <a style="text-decoration: none;font-size: 15px;" href="{{ path('app_addbook') }}"
+        >Create New</a
+      >
+    </button>
+  <script src="main/filterPublished.js"></script>
+  </body>
+
+</html>

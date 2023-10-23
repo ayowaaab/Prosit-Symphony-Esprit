@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('style.css') }}" />
+    <title>Add Author</title>
+  </head>
+  <body>
+    <h1>👀 Add Author 👀</h1>
+    <br />
+    {{ form_start(F,{'attr':{'class':'form'}}) }}
+    <div class="form-flex-container">
+      <div class="inputLabel">
+        <label>Name</label>
+        <div>
+          {{ form_widget(F.username,{'attr':{'class':'inputField'}}) }}
+          <p class="alert">Incompatible name</p>
+        </div>
+      </div>
+
+      <div class="inputLabel">
+        <label>E-mail</label>
+        <div>
+          {{ form_widget(F.email,{'attr':{'class':'inputField'}}) }}
+          <p class="alert">Wrong E-mail format</p>
+        </div>
+      </div>
+    </div>
+    {{ form_widget(F.Submit,{'attr':{'class':'btn'}}) }}
+    {{ form_end(F) }}
+
+    <script src="{{ asset('main/authorForm.js') }}"></script>
+  </body>
+</html>

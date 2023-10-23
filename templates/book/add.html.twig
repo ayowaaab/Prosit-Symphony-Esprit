@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('style.css') }}" />
+    <title>Add Book</title>
+  </head>
+  <body>
+
+    <h1>👀 Add Book 👀</h1>
+
+    <br />
+    {{ form_start(F,{'attr':{'class':'form'}}) }}
+
+    <div class="inputLabel">
+      <label>Ref</label>
+      {{ form_widget(F.ref,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel">
+      <label>Title</label>
+      {{ form_widget(F.title,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel">
+      <label>Category</label>
+      {{ form_widget(F.category,{'attr':{'class':'inputField'}}) }}
+    </div>
+
+    <div class="inputLabel">
+      <label>Author</label>
+      {{ form_widget(F.author,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel remove">
+      <label>Publiched</label>
+      {{ form_widget(F.published,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel">
+      <label>Date</label>
+      {{ form_widget(F.publicationDate,{'attr':{'class':'inputField'}}) }}
+    </div>
+
+    {{ form_widget(F.Save,{'attr':{'class':'btn'}}) }}
+    {{ form_end(F) }}
+
+    <script src="{{ asset('main/bookForm.js') }}"></script>
+
+  </body>
+</html>

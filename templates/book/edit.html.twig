@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('style.css') }}" />
+    <title>Edit Book</title>
+</head>
+<body>
+    <h1>Edit ✅</h1>
+    {{ form_start(F,{'attr':{'class':'form'}}) }}
+
+    <div class="inputLabel">
+      <label>Ref</label>
+      {{ form_widget(F.ref,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel">
+      <label>Title</label>
+      {{ form_widget(F.title,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel">
+      <label>Category</label>
+      {{ form_widget(F.category,{'attr':{'class':'inputField'}}) }}
+    </div>
+
+    <div class="inputLabel">
+      <label>Author</label>
+      {{ form_widget(F.author,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel">
+      <label>Date</label>
+      {{ form_widget(F.publicationDate,{'attr':{'class':'inputField'}}) }}
+    </div>
+    <div class="inputLabel">
+      <label>Publiched</label>
+      {{ form_widget(F.published,{'attr':{'class':'inputField'}}) }}
+    </div>
+
+    {{ form_widget(F.Save,{'attr':{'class':'btn'}}) }}
+    {{ form_end(F) }}
+    <br>
+    <button style="padding: .5rem 2rem;border-radius:10px;border:1px solid grey"><a style="text-decoration:none" href="{{ path('app_book') }}">Back to list</a></button>
+    
+    
+    <script src="{{ asset('main/bookForm.js') }}"></script>
+</body>
+
+</html>
