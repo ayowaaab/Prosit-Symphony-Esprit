@@ -35,9 +35,11 @@ class BookController extends AbstractController
     {
         $ref =$req->query->get('recherche');
         $list = $bookList->findRef($ref);
+        $x=$bookList->changeRomance();
         return $this->render('book/published.html.twig', [
             'Tab' => $list,
-
+            'sum' => $x,
+            
         ]);
     }
     #[Route('/deuxDate', name: 'deuxDate')]
