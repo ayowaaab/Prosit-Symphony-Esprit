@@ -7,6 +7,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\AuthorRepository;
 use App\Entity\Author;
 use App\Form\FormType;
+use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +21,7 @@ class AuthorController extends AbstractController
     #[Route('/author', name: 'app_showAuthorDB')]
     public function showAuthorDB(AuthorRepository $repo): Response
     {
-        $list = $repo->findAll();
+        $list = $repo->findOrderEmail();
         return $this->render('author/showAuthorDB.html.twig', [
             'dbList' => $list,
         ]);

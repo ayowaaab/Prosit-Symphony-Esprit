@@ -29,6 +29,8 @@ class Book
     #[ORM\JoinColumn(nullable: false)]
     private ?Author $author = null;
 
+ 
+
     public function getRef(): ?int
     {
         return $this->ref;

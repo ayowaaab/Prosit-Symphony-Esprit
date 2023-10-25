@@ -10,9 +10,19 @@
     <h1>❌ Pas de livre ❌</h1>
     {% else %}
     <h1>📖 List of Books 📖</h1>
+   
+    <form action="{{ path('app_showRef') }}" method="get">
+        <label for="recherche">Ref</label>
+        <input type="text" id="recherche" name="recherche">
+        <button type="submit" style="padding: 0 .5rem;">Search</button>
+    </form>
+
     <div id="published">
-      <label for="check">UnPublished</label>
-      <input type="checkbox" id="check" />
+      <select name="" id="check">
+        <option value="all">All</option>
+        <option value="pub">Published</option>
+        <option value="unPub">UnPublished</option>
+      </select>
     </div>
     <table class="book">
       <tr>
@@ -47,12 +57,13 @@
        {% endfor %}
     </table>
     {% endif %} {% set NbUnpub = Nbpub - Tab|length %}
-
+    <button style="padding: 0 1rem;"><a href="{{ path('deuxDate')}}">la liste des livres publiés entre deux dates</a></button>
     <br />
     <div>
-      <h2>Number of Published Books : {{ Nbpub }}</h2>
-      <h2>Number of Unpublished Books : {{ NbUnpub | abs }}</h2>
+      <h2>Number of Published Books : <b>{{ Nbpub }}</b></h2>
+      <h2>Number of Unpublished Books :<b> {{ NbUnpub | abs }}</b></h2>
     </div>
+    <h2>The Number of books in the category <b>Science-Fiction </b>est: <b>{{ sum }}</b></h2>
     <br />
     <button
       style="padding: 0.25rem .75rem; border-radius: 10px; border: 1px solid grey;"

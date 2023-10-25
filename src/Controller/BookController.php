@@ -20,9 +20,32 @@ class BookController extends AbstractController
     #[Route('/book', name: 'app_book')]
     public function book(BookRepository $bookList): Response
     {
+        $x=$bookList->changeRomance();
+        $x = $bookList->findScience();
         $list = $bookList->findAll();
-        
+
         return $this->render('book/published.html.twig', [
+            'Tab' => $list,
+            'sum' => $x,
+        ]);
+    }
+   
+    #[Route('/showRef', name: 'app_showRef')]
+    public function showRef(Request $req, BookRepository $bookList): Response
+    {
+        $ref =$req->query->get('recherche');
+        $list = $bookList->findRef($ref);
+        return $this->render('book/published.html.twig', [
+            'Tab' => $list,
+
+        ]);
+    }
+    #[Route('/deuxDate', name: 'deuxDate')]
+    public function deuxDate(Request $req, BookRepository $bookList): Response
+    {
+       
+        $list = $bookList->deuxDate();
+        return $this->render('book/deuxDate.html.twig', [
             'Tab' => $list,
 
         ]);
