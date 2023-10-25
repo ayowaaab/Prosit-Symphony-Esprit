@@ -26,6 +26,23 @@ class AuthorController extends AbstractController
             'dbList' => $list,
         ]);
     }
+    #[Route('/minMax', name: 'minMax')]
+    public function minMax(AuthorRepository $repo,Request $req): Response
+    {
+        $min =$req->query->get('min');
+        $max =$req->query->get('max');
+        $list = $repo->minMax($min,$max);
+        return $this->render('author/showAuthorDB.html.twig', [
+            'dbList' => $list,
+        ]);
+    }
+    #[Route('/delete_0', name: 'delete_0')]
+    public function delete_0(AuthorRepository $repo): Response
+    {
+     
+        $result = $repo->deleteZero();
+        return $this->redirectToRoute('app_showAuthorDB');
+    }
 
     #[Route('/addauthor', name: 'app_addauthor')]
     public function addauthor(ManagerRegistry $doctrine, Request $req): Response

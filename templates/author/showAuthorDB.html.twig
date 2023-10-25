@@ -5,13 +5,18 @@
     <link rel="stylesheet" href="style.css" />
     <title>DB List</title>
   </head>
-  <body>
+  <body class="author">
     {% if dbList|length == 0 %}
     <h1>
       ❌The Table is Empty❌
     </h1>
     {% else %}
     <h1>🖋 Authors List 🖋</h1>
+    <form action="{{ path('minMax') }}" method="GET">
+      <label for="min">Min Number</label><input name="min" id="min" type="number">
+      <label for="max">Max Number</label><input name="max" id="max" type="number">
+      <button type="submit">Search</button>
+    </form>
     <table class="author">
       <tr>
         <th>ID</th>
@@ -33,6 +38,7 @@
       </tr>
       {% endfor %}
     </table>
+    <h2>Delete Authors whose number of books is ZERO ! <b><a href="{{ path('delete_0') }}">Delete</a></b></h2>
     {% endif %}
    
     

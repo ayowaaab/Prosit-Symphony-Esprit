@@ -28,7 +28,11 @@ h2 {
   flex-direction: column;
   gap: 1.5rem;
 }
+button{cursor: pointer;}
 /*? author */
+.author{
+  gap: 2rem;
+}
 .author td {
   font-weight: 500;
   padding: 0.25rem .5rem; 
@@ -48,7 +52,7 @@ h2 {
   filter: invert(12%) sepia(62%) saturate(4178%) hue-rotate(317deg) brightness(89%) contrast(97%);
 }.author img:hover{transform: scale(1.5);}
 h1{color: #D91A73}
-
+#min,#max{outline: none;padding: .1rem .5rem;}
 /*? book */
 .book td {
   font-weight: 500;

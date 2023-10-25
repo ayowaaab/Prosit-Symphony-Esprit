@@ -25,14 +25,28 @@ class AuthorRepository extends ServiceEntityRepository
     //     * @return Author[] Returns an array of Author objects
     //     */
 
-       public function findOrderEmail(): array
-       {
-           return $this->createQueryBuilder('a')
-               ->orderBy('a.email', 'ASC')
-               ->getQuery()
-               ->getResult()
-           ;
-       }
+    public function findOrderEmail(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.email', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function minMax($min,$max): array
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT a FROM App\Entity\Author a WHERE a.nbBooks BETWEEN :min AND :max ")
+                ->setParameter('min',$min)
+                ->setParameter('max',$max);
+        return $query->getResult();
+    }
+    public function deleteZero(): int
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("DELETE FROM App\Entity\Author a WHERE a.nbBooks = 0 ");  
+        return $query->execute();
+    }
 
 
     //    public function findOneBySomeField($value): ?Author
