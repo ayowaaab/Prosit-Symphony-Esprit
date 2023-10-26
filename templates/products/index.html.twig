@@ -1,8 +1,10 @@
-{% extends 'base.html.twig' %} {% block title %}Products index{% endblock %} {%
-block body %}
+{% extends 'base.html.twig' %} {% block title %}Products index{% endblock %} {% block body %}
+{% block nav %}
+{% endblock %}
 <center><h1 class="display-1 mb-5 mt-3">Products</h1></center>
+<div class="table-responsive">
 
-<table class="container mb-5 table table-striped align-baseline">
+<table class="container mb-5 table table-striped table-bordered align-baseline">
   <thead>
     <tr>
       <th>Id</th>
@@ -34,11 +36,13 @@ block body %}
     </tr>
     {% else %}
     <tr>
-      <td colspan="5">no records found</td>
+      <td colspan="5" class="text-center">No Records Found</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
+
 <center><a class="btn btn-primary mb-5 px-3" href="{{ path('app_products_new') }}">Create new</a></center>
 
 {% endblock %}
