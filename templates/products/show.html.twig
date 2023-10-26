@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %} {% block title %}Products{% endblock %} {% block
+body %}
+
+<h1 class="display-2 text-center my-5">{{ product.title }}</h1>
+<div class="container d-flex justify-content-between gap-3">
+
+    <div class="">
+        <h2>ID: {{ product.id }}</h2>
+        <h2>
+            Description : <br />
+            <span class="desc">{{ product.description }}</span>
+        </h2>
+    </div>
+    <div class="">
+        <img id="showImh" src="{{asset('uploads/brochures/' ~ product.img)}}" alt="img"/>
+    </div>
+</div>
+    
+<center>
+  <a class="btn btn-primary my-5 px-5" href="{{ path('app_products_index') }}"
+    >back to list</a
+  >
+</center>
+
+{% endblock %}

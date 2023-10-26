@@ -1,0 +1,15 @@
+
+{{ form_start(form,{'attr':{'class':'container'}}) }}
+        
+<div class="mb-3 gap-3" style="display: flex;flex-direction: column;justify-content: center;">
+        {{ form_row(form.title,{'attr':{'class':'form-control'}}) }}
+        {{ form_row(form.description,{'attr':{'class':'form-control'}}) }}
+</div>
+<center>
+    <div style="display: flex;justify-content: center;">
+        {{ form_row(form.brochure,{'attr':{'class':'form-control '}}) }}
+    </div>
+<br>
+    <button class="btn btn-primary px-5 mb-3">{{ button_label|default('Save') }}</button>
+</center>
+{{ form_end(form) }}
