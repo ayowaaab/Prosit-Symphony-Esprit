@@ -2,8 +2,8 @@
 {% block nav %}
 {% endblock %}
 <center><h1 class="display-1 mb-5 mt-3">Products</h1></center>
+<input type="text" class="form-control container my-3" placeholder="Search" id="rechercher">
 <div class="table-responsive">
-
 <table class="container mb-5 table table-striped table-bordered align-baseline">
   <thead>
     <tr>
@@ -44,5 +44,6 @@
 </div>
 
 <center><a class="btn btn-primary mb-5 px-3" href="{{ path('app_products_new') }}">Create new</a></center>
+<script src="{{asset('main/products.js')}}"></script>
 
 {% endblock %}
